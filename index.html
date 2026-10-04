@@ -1,0 +1,60 @@
+<!doctype html><html lang="bn"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#7c3aed"><link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css">
+<title>Family Rate Pro</title></head><body><main>
+<header><div><h1>Family Rate <span>PRO</span></h1><p>রবি • এয়ারটেল · Smart OTP Calculator</p></div><button id="install" hidden>Install</button></header>
+
+<section class="paste">
+<div class="title"><b>গ্রুপের Need Text</b><small>কপি করে Paste করুন</small></div>
+<textarea id="needText" placeholder="এয়ারটেল ওটিপি নীড 50জিবি 500 মিনিট&#10;অথবা: রবি OTP 50+500"></textarea>
+<div class="parsed"><span id="parsedText">OTP শনাক্ত হয়নি</span><button id="parseBtn">AUTO DETECT</button></div>
+</section>
+
+<section class="card">
+<div class="sectionTitle">FAMILY PACK <em>মূল প্যাক</em></div>
+<div class="grid">
+<label>GB<input id="totalGB" type="number" value="200"></label>
+<label>মিনিট<input id="totalMin" type="number" value="2000"></label>
+<label>Balance<input id="balance" type="number" value="1940"></label>
+<label>Target<input id="target" type="number" value="2100"></label>
+</div>
+</section>
+
+<section class="card otpCard">
+<div class="sectionTitle">OTP NEED <em id="operator">—</em></div>
+<div class="grid">
+<label>OTP GB<input id="otpGB" type="number" value="50"></label>
+<label>OTP মিনিট<input id="otpMin" type="number" value="500"></label>
+</div>
+</section>
+
+<section class="market">
+<div class="marketTop"><div><b>OTP MARKET VALUE</b><small>OTP package-এর বর্তমান market value</small></div>
+<label>৳<input id="otpMarket" type="number" value="450"></label></div>
+</section>
+
+<section class="distribution">
+<div class="distTitle"><b>বন্টন অনুযায়ী Market Rate</b><small>বাকি ৪ জনের package-এর বাজারদর</small></div>
+<div class="grid">
+<div class="info"><small>বাকি প্যাক</small><b id="remain">150 GB + 1500 মিনিট</b></div>
+<div class="info"><small>Raw / জন</small><b id="raw">37.5 GB + 375 মিনিট</b></div>
+<div class="info highlight"><small>Round / জন</small><b id="per">40 GB + 400 মিনিট</b></div>
+<label class="marketRate">Market Rate<input id="distributionRate" type="number" value="400"></label>
+</div>
+</section>
+
+<section class="calc">
+<div class="box"><small>৪ জনের Market Rate</small><b id="four">৳1,600</b></div>
+<div class="box important"><small>OTP Target Rate</small><strong id="otpRate">৳500</strong></div>
+</section>
+
+<section class="final">
+<div><span>OTP Market</span><b id="mktOut">৳450</b></div>
+<div><span>Target Rate</span><b id="targetRate">৳500</b></div>
+<div class="gap"><span>OTP Difference</span><b id="diff">+৳50</b></div>
+<div class="total"><span>Final Sale</span><strong id="sale">৳2,100</strong></div>
+</section>
+<div id="alert" class="alert">✓ Target অনুযায়ী হিসাব প্রস্তুত</div>
+<p class="formula">OTP Target Rate = Target − (৪ জন × বন্টনের Market Rate)</p>
+<footer>Family Rate Pro · Compact PWA</footer>
+</main><script src="app.js"></script></body></html>
