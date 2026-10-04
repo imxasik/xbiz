@@ -1,1 +1,16 @@
-{"name":"Family Rate Pro","short_name":"Family Rate","start_url":"./","display":"standalone","background_color":"#f4f5f8","theme_color":"#7c3aed","lang":"bn"}
+{
+  "name": "Family Rate Pro — Smart OTP Calculator",
+  "short_name": "Family Rate",
+  "description": "রবি/এয়ারটেল ফ্যামিলি প্যাকের OTP রেট, রিস্ক ও প্রফিট ক্যালকুলেটর",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f5f9",
+  "theme_color": "#6d28d9",
+  "lang": "bn",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
