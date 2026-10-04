@@ -1,60 +1,177 @@
-<!doctype html><html lang="bn"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#7c3aed"><link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css">
-<title>Family Rate Pro</title></head><body><main>
-<header><div><h1>Family Rate <span>PRO</span></h1><p>রবি • এয়ারটেল · Smart OTP Calculator</p></div><button id="install" hidden>Install</button></header>
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#6d28d9">
+<meta name="description" content="Family Rate Pro — রবি/এয়ারটেল ফ্যামিলি প্যাক OTP রেট ক্যালকুলেটর। রিস্ক ফ্যাক্টর, মিনিমাম রিস্ক, ম্যাক্সিমাম প্রফিট ও স্মার্ট রেকমেন্ডেশন সহ।">
+<title>Family Rate Pro — Smart OTP Calculator</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Family Rate">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
 
-<section class="paste">
-<div class="title"><b>গ্রুপের Need Text</b><small>কপি করে Paste করুন</small></div>
-<textarea id="needText" placeholder="এয়ারটেল ওটিপি নীড 50জিবি 500 মিনিট&#10;অথবা: রবি OTP 50+500"></textarea>
-<div class="parsed"><span id="parsedText">OTP শনাক্ত হয়নি</span><button id="parseBtn">AUTO DETECT</button></div>
+<header>
+  <div class="brand">
+    <img class="logo" src="icon-192.png" alt="Family Rate Pro">
+    <div>
+      <h1>Family Rate <span>PRO</span></h1>
+      <p>রবি • এয়ারটেল · Smart OTP Calculator</p>
+    </div>
+  </div>
+  <button id="install" hidden>ইনস্টল</button>
+</header>
+
+<section class="card">
+  <div class="cardHead">
+    <div><b class="kicker v">NEED TEXT</b><h2>গ্রুপের নীড টেক্সট</h2></div>
+    <button id="parseBtn" class="chipBtn" type="button">অটো ডিটেক্ট</button>
+  </div>
+  <textarea id="needText" rows="2" placeholder="এয়ারটেল ওটিপি নীড 50জিবি 500 মিনিট&#10;অথবা সংক্ষেপে: রবি OTP 50+500"></textarea>
+  <p class="parsed" id="parsedText" role="status">নীড টেক্সট পেস্ট করুন — অপারেটর, GB ও মিনিট অটো ডিটেক্ট হবে</p>
 </section>
 
 <section class="card">
-<div class="sectionTitle">FAMILY PACK <em>মূল প্যাক</em></div>
-<div class="grid">
-<label>GB<input id="totalGB" type="number" value="200"></label>
-<label>মিনিট<input id="totalMin" type="number" value="2000"></label>
-<label>Balance<input id="balance" type="number" value="1940"></label>
-<label>Target<input id="target" type="number" value="2100"></label>
-</div>
+  <div class="cardHead">
+    <div><b class="kicker v">FAMILY PACK</b><h2>ফ্যামিলি প্যাক ও OTP</h2></div>
+  </div>
+  <div class="grid">
+    <label class="field">মোট GB<input id="totalGB" type="number" inputmode="decimal" min="0" value="200"></label>
+    <label class="field">মোট মিনিট<input id="totalMin" type="number" inputmode="decimal" min="0" value="2000"></label>
+    <label class="field">ব্যালেন্স (কস্ট)<span class="money"><i>৳</i><input id="balance" type="number" inputmode="numeric" min="0" value="1940"></span></label>
+    <label class="field">টার্গেট সেল<span class="money"><i>৳</i><input id="target" type="number" inputmode="numeric" min="0" value="2100"></span></label>
+  </div>
+  <div class="divider"><span>OTP NEED</span><em id="operator">OTP</em></div>
+  <div class="grid">
+    <label class="field">OTP GB<input id="otpGB" type="number" inputmode="decimal" min="0" value="50"></label>
+    <label class="field">OTP মিনিট<input id="otpMin" type="number" inputmode="decimal" min="0" value="500"></label>
+  </div>
 </section>
 
-<section class="card otpCard">
-<div class="sectionTitle">OTP NEED <em id="operator">—</em></div>
-<div class="grid">
-<label>OTP GB<input id="otpGB" type="number" value="50"></label>
-<label>OTP মিনিট<input id="otpMin" type="number" value="500"></label>
-</div>
+<section class="card">
+  <div class="cardHead">
+    <div><b class="kicker a">MARKET &amp; RISK</b><h2>মার্কেট ও ঝুঁকি</h2></div>
+  </div>
+
+  <label class="field">OTP মার্কেট ভ্যালু
+    <small>প্রতিযোগীদের চলতি দাম — কম রেট দিলেই কাস্টমার OTP দেয়</small>
+    <span class="money am"><i>৳</i><input id="otpMarket" type="number" inputmode="numeric" min="0" value="450"></span>
+  </label>
+
+  <div class="mt">
+    <label class="field">ডিস্ট্রিবিউশন রেট (প্রতি জন)
+      <small>বাকি ৪ জনের প্যাকের বাজারদর</small>
+      <span class="money sk"><i>৳</i><input id="distributionRate" type="number" inputmode="numeric" min="0" value="400"></span>
+    </label>
+    <div class="chips">
+      <span class="chip" id="chipRemain">বাকি 150 GB + 1500 মিনিট</span>
+      <span class="chip" id="chipPer">জনপ্রতি ≈ 40 GB + 400 মিনিট</span>
+      <span class="chip" id="chipFour">৪ জন × ৳400 = ৳1,600</span>
+    </div>
+  </div>
+
+  <div class="mt riskBlock">
+    <div class="riskTop"><label for="risk">রিস্ক ফ্যাক্টর</label><b id="riskVal">10%</b></div>
+    <input type="range" id="risk" min="0" max="30" step="5" value="10" aria-label="রিস্ক ফ্যাক্টর শতাংশ">
+    <div class="riskScale"><span>0%</span><span>15%</span><span>30%</span></div>
+    <small class="riskHint" id="riskHint">ঝুঁকিতে ডিস্ট্রিবিউশন আয় ৳1,440</small>
+  </div>
 </section>
 
-<section class="market">
-<div class="marketTop"><div><b>OTP MARKET VALUE</b><small>OTP package-এর বর্তমান market value</small></div>
-<label>৳<input id="otpMarket" type="number" value="450"></label></div>
+<section class="card">
+  <div class="cardHead">
+    <div><b class="kicker s">SCENARIOS</b><h2>সিনারিও</h2></div>
+  </div>
+  <div class="scn">
+    <div class="scnHead"><span>সিনারিও</span><span>OTP রেট</span><span>মোট</span><span>লাভ</span></div>
+
+    <div class="scnRow">
+      <div class="scnName">
+        <i class="ic ok"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.6-3 7.6-7 9-4-1.4-7-4.4-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></i>
+        <div><b>নিরাপদ</b><small>MIN RISK · ঝুঁকিতেও লস নেই</small></div>
+      </div>
+      <b class="scnRate" id="safeRate">৳500</b>
+      <span class="scnTot" id="safeTot">৳1,940</span>
+      <b class="scnPft" id="safePft">৳0</b>
+    </div>
+
+    <div class="scnRow std">
+      <div class="scnName">
+        <i class="ic st"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.2"/></svg></i>
+        <div><b>স্ট্যান্ডার্ড</b><small>STANDARD · টার্গেট পূরণ</small></div>
+      </div>
+      <b class="scnRate" id="stdRate">৳500</b>
+      <span class="scnTot" id="stdTot">৳2,100</span>
+      <b class="scnPft" id="stdPft">৳160</b>
+    </div>
+
+    <div class="scnRow">
+      <div class="scnName">
+        <i class="ic mx"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 7-7"/><path d="M14 8h6v6"/></svg></i>
+        <div><b>ম্যাক্স প্রফিট</b><small>MAX PROFIT · মার্কেট দরে বিক্রি</small></div>
+      </div>
+      <b class="scnRate" id="maxRate">৳450</b>
+      <span class="scnTot" id="maxTot">৳2,050</span>
+      <b class="scnPft" id="maxPft">৳110</b>
+    </div>
+  </div>
 </section>
 
-<section class="distribution">
-<div class="distTitle"><b>বন্টন অনুযায়ী Market Rate</b><small>বাকি ৪ জনের package-এর বাজারদর</small></div>
-<div class="grid">
-<div class="info"><small>বাকি প্যাক</small><b id="remain">150 GB + 1500 মিনিট</b></div>
-<div class="info"><small>Raw / জন</small><b id="raw">37.5 GB + 375 মিনিট</b></div>
-<div class="info highlight"><small>Round / জন</small><b id="per">40 GB + 400 মিনিট</b></div>
-<label class="marketRate">Market Rate<input id="distributionRate" type="number" value="400"></label>
-</div>
+<section class="card rec">
+  <div class="cardHead">
+    <div><b class="kicker w">RECOMMENDATION</b><h2>রেকমেন্ডেশন</h2></div>
+    <button id="copyBtn" class="chipBtn dark" type="button">কপি</button>
+  </div>
+
+  <div class="recHero">
+    <div class="recRate">
+      <small>এই OTP রেট দিন</small>
+      <strong id="recRate">৳425</strong>
+    </div>
+    <div class="recSide">
+      <div class="pill"><small>মোট বিক্রয়</small><b id="recTot">৳2,025</b></div>
+      <div class="pill"><small>লাভ</small><b id="recPft">৳85</b></div>
+      <div class="pill"><small>ঝুঁকিতে</small><b id="recRisk">৳−75</b></div>
+    </div>
+  </div>
+
+  <div class="ruler" id="ruler">
+    <div class="rTrack">
+      <div class="rBar">
+        <div class="seg loss" id="segLoss"></div>
+        <div class="seg safe" id="segSafe"></div>
+        <div class="seg target" id="segTarget"></div>
+        <div class="seg gray" id="segGray"></div>
+      </div>
+      <div class="rMark f" id="mFloor"><i></i></div>
+      <div class="rMark s" id="mStd"><i></i></div>
+      <div class="rMark m" id="mMarket"><i></i></div>
+    </div>
+    <div class="rPinWrap"><div class="rPin" id="rPin">★ 425</div></div>
+    <div class="rLegend">
+      <span><i class="lf"></i>নিরাপদ <b id="lgFloor">৳500</b></span>
+      <span><i class="ls"></i>টার্গেট <b id="lgStd">৳500</b></span>
+      <span id="lgMarketWrap"><i class="lm"></i>মার্কেট <b id="lgMarket">৳450</b></span>
+    </div>
+  </div>
+
+  <div class="verdict" id="verdict" role="status" aria-live="polite">…</div>
 </section>
 
-<section class="calc">
-<div class="box"><small>৪ জনের Market Rate</small><b id="four">৳1,600</b></div>
-<div class="box important"><small>OTP Target Rate</small><strong id="otpRate">৳500</strong></div>
-</section>
+<p class="formula">নিরাপদ রেট = কস্ট − ঝুঁকি-সহ ডিস্ট্রিবিউশন আয় · রেকমেন্ডেড = মার্কেট − ৫% কম্পিটিশন বাফার</p>
+<footer>Family Rate Pro · Smart OTP Pricing</footer>
 
-<section class="final">
-<div><span>OTP Market</span><b id="mktOut">৳450</b></div>
-<div><span>Target Rate</span><b id="targetRate">৳500</b></div>
-<div class="gap"><span>OTP Difference</span><b id="diff">+৳50</b></div>
-<div class="total"><span>Final Sale</span><strong id="sale">৳2,100</strong></div>
-</section>
-<div id="alert" class="alert">✓ Target অনুযায়ী হিসাব প্রস্তুত</div>
-<p class="formula">OTP Target Rate = Target − (৪ জন × বন্টনের Market Rate)</p>
-<footer>Family Rate Pro · Compact PWA</footer>
-</main><script src="app.js"></script></body></html>
+</main>
+<div id="toast" role="status"></div>
+<script src="app.js"></script>
+</body>
+</html>
